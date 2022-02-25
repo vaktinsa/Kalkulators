@@ -1,8 +1,10 @@
-import numbers
 from tkinter import*
+from math import*
+from unittest.util import strclass
 mansLogs=Tk()
-mansLogs.title("Shushi buh kuh")
+mansLogs.title("Kalkulators")
 
+#=============================================================================================================================================================================
 def btnClick(number):
     current = e.get() #nolasa esošo skaitli
     e.delete(0,END) #nodzēš no sākuma līdz beigām
@@ -10,17 +12,36 @@ def btnClick(number):
     e.insert(0,newNumber) #ievieto displejā
     return 0
 
+def show_point():
+    if e.get()==".":
+        pass
+    else:
+        e.insert(END,".")
+
+
+def correct(inp):
+    if inp == '':
+        return True
+    if ' ' in inp:
+        return False
+    try:
+        float(inp)
+    except ValueError: #catching error because strings cannot be converted to string
+        return False
+    else:
+        return True
+
 def btnCommand(command):
     global number #jāiegaumē skaitlis un darbība
     global mathOp # matemātisks operators
     mathOp=command #+,-,*,/
     global num1
-    num1=int(e.get())
+    num1=float(e.get())
     e.delete(0,END)
     return 0
 
 def Equals():
-    num2=int(e.get())
+    num2=float(e.get())
     result=0
     if mathOp=="+":
         result=num1+num2
@@ -30,6 +51,10 @@ def Equals():
         result=num1/num2
     elif mathOp=="*":
         result=num1*num2
+    elif mathOp==",":
+        result=num1+num2/10^num2.count()
+    elif mathOp=="%":
+        result= num1*0.01*num2
     else:
         result=0
     e.delete(0,END)
@@ -42,7 +67,11 @@ def Clear():
     mathOp=""
     return 0
 
-e=Entry(mansLogs,width=13,font=("Arial Black",23))
+#=============================================================================================================================================================================
+reg = mansLogs.register(correct) #registering validation
+
+e=Entry(mansLogs,width=13,font=("Arial Black",23),validate='key', validatecommand=(reg, '%P'))
+
 
 e.grid(row=0,column=0,columnspan=3)
 
@@ -60,10 +89,13 @@ btnTimes=Button(mansLogs, text="*",padx="40",pady="40", command=lambda:btnComman
 btnSlash=Button(mansLogs, text="/",padx="40",pady="40", command=lambda:btnCommand("/"))
 btnMinus=Button(mansLogs, text="-",padx="40",pady="40", command=lambda:btnCommand("-"))
 btnPlus=Button(mansLogs, text="+",padx="40",pady="40", command=lambda:btnCommand("+"))
+btnPercent=Button(mansLogs, text="%",padx="40",pady="40", command=lambda:btnCommand("%"))
 btnClear=Button(mansLogs, text="C",padx="40",pady="40",command=Clear)
 btnEquals=Button(mansLogs, text="=",padx="40",pady="40",command=Equals)
-btnComma=Button(mansLogs, text=",",padx="40",pady="40")
+btnComma=Button(mansLogs, text=",",padx="40",pady="40",command=show_point)
 
+
+btnPercent.grid(row=5,column=0)
 
 btnComma.grid(row=4,column=0)
 btn0.grid(row=4,column=1)
