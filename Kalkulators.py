@@ -1,3 +1,5 @@
+from ast import operator
+from distutils import command
 from tkinter import*
 from math import*
 from unittest.util import strclass
@@ -40,6 +42,8 @@ def btnCommand(command):
     e.delete(0,END)
     return 0
 
+
+
 def Equals():
     num2=float(e.get())
     result=0
@@ -55,11 +59,39 @@ def Equals():
         result=num1+num2/10^num2.count()
     elif mathOp=="%":
         result= num1*0.01*num2
+    elif mathOp=="|x|":
+        result= modf(num1)
     else:
         result=0
     e.delete(0,END)
     e.insert(0,str(result))
     return 0
+
+def sq_rt():
+    global operator
+    global num1
+
+    num1=float(e.get())
+    num1=sqrt(num1)
+    e.delete(0,END)
+    e.insert(0,num1)
+
+def Mod():
+    global operator
+    global num1
+
+    num1=float(e.get())
+    num2=modf(num1)
+    e.delete(0,END)
+    e.insert(0,num2)
+
+def Square():
+    global num1
+
+    num1=float(e.get())
+    num2=num1*num1
+    e.delete(0,END)
+    e.insert(0,num2)
 
 def Clear():
     e.delete(0,END)
@@ -90,12 +122,19 @@ btnSlash=Button(mansLogs, text="/",padx="40",pady="40", command=lambda:btnComman
 btnMinus=Button(mansLogs, text="-",padx="40",pady="40", command=lambda:btnCommand("-"))
 btnPlus=Button(mansLogs, text="+",padx="40",pady="40", command=lambda:btnCommand("+"))
 btnPercent=Button(mansLogs, text="%",padx="40",pady="40", command=lambda:btnCommand("%"))
+btnSqrt=Button(mansLogs, text="√",padx="40",pady="40", command=sq_rt)
 btnClear=Button(mansLogs, text="C",padx="40",pady="40",command=Clear)
 btnEquals=Button(mansLogs, text="=",padx="40",pady="40",command=Equals)
 btnComma=Button(mansLogs, text=",",padx="40",pady="40",command=show_point)
+btnMod=Button(mansLogs, text="|x|",padx="40",pady="40",command=Mod)
+btnSqr=Button(mansLogs, text="^2",padx="40",pady="40",command=Square)
 
 
 btnPercent.grid(row=5,column=0)
+btnSqrt.grid(row=5,column=1)
+btnMod.grid(row=5,column=2)
+btnSqr.grid(row=5,column=3)
+
 
 btnComma.grid(row=4,column=0)
 btn0.grid(row=4,column=1)
