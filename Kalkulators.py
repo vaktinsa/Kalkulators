@@ -5,6 +5,7 @@ from math import*
 from unittest.util import strclass
 mansLogs=Tk()
 mansLogs.title("Kalkulators")
+mansLogs.configure(background="orange")
 
 #=============================================================================================================================================================================
 def btnClick(number):
@@ -76,12 +77,12 @@ def sq_rt():
     e.delete(0,END)
     e.insert(0,num1)
 
-def Mod():
+def Log10():
     global operator
     global num1
 
     num1=float(e.get())
-    num2=modf(num1)
+    num2=log10(num1)
     e.delete(0,END)
     e.insert(0,num2)
 
@@ -102,37 +103,37 @@ def Clear():
 #=============================================================================================================================================================================
 reg = mansLogs.register(correct) #registering validation
 
-e=Entry(mansLogs,width=13,font=("Arial Black",23),validate='key', validatecommand=(reg, '%P'))
+e=Entry(mansLogs,width=13,font=("Arial black",23),validate='key',bg="lightblue",fg="orange", validatecommand=(reg, '%P'),bd=30)
 
 
 e.grid(row=0,column=0,columnspan=3)
 
-btn0=Button(mansLogs, text="0",padx="40",pady="40",command=lambda:btnClick(0))
-btn1=Button(mansLogs, text="1",padx="40",pady="40",command=lambda:btnClick(1))
-btn2=Button(mansLogs, text="2",padx="40",pady="40",command=lambda:btnClick(2))
-btn3=Button(mansLogs, text="3",padx="40",pady="40",command=lambda:btnClick(3))
-btn4=Button(mansLogs, text="4",padx="40",pady="40",command=lambda:btnClick(4))
-btn5=Button(mansLogs, text="5",padx="40",pady="40",command=lambda:btnClick(5))
-btn6=Button(mansLogs, text="6",padx="40",pady="40",command=lambda:btnClick(6))
-btn7=Button(mansLogs, text="7",padx="40",pady="40",command=lambda:btnClick(7))
-btn8=Button(mansLogs, text="8",padx="40",pady="40",command=lambda:btnClick(8))
-btn9=Button(mansLogs, text="9",padx="40",pady="40",command=lambda:btnClick(9))
-btnTimes=Button(mansLogs, text="*",padx="40",pady="40", command=lambda:btnCommand("*"))
-btnSlash=Button(mansLogs, text="/",padx="40",pady="40", command=lambda:btnCommand("/"))
-btnMinus=Button(mansLogs, text="-",padx="40",pady="40", command=lambda:btnCommand("-"))
-btnPlus=Button(mansLogs, text="+",padx="40",pady="40", command=lambda:btnCommand("+"))
-btnPercent=Button(mansLogs, text="%",padx="40",pady="40", command=lambda:btnCommand("%"))
-btnSqrt=Button(mansLogs, text="√",padx="40",pady="40", command=sq_rt)
-btnClear=Button(mansLogs, text="C",padx="40",pady="40",command=Clear)
-btnEquals=Button(mansLogs, text="=",padx="40",pady="40",command=Equals)
-btnComma=Button(mansLogs, text=",",padx="40",pady="40",command=show_point)
-btnMod=Button(mansLogs, text="|x|",padx="40",pady="40",command=Mod)
-btnSqr=Button(mansLogs, text="^2",padx="40",pady="40",command=Square)
+btn0=Button(mansLogs,bd=20, text="0",padx="30",font=("Arial",20),pady="30",bg="cyan",fg="orange",command=lambda:btnClick(0))
+btn1=Button(mansLogs,bd=20, text="1",padx="30",font=("Arial",20),pady="30",bg="cyan",fg="orange",command=lambda:btnClick(1))
+btn2=Button(mansLogs,bd=20, text="2",padx="30",font=("Arial",20),pady="30",bg="cyan",fg="orange",command=lambda:btnClick(2))
+btn3=Button(mansLogs,bd=20, text="3",padx="30",font=("Arial",20),pady="30",bg="cyan",fg="orange",command=lambda:btnClick(3))
+btn4=Button(mansLogs,bd=20, text="4",padx="30",font=("Arial",20),pady="30",bg="cyan",fg="orange",command=lambda:btnClick(4))
+btn5=Button(mansLogs,bd=20, text="5",padx="30",font=("Arial",20),pady="30",bg="cyan",fg="orange",command=lambda:btnClick(5))
+btn6=Button(mansLogs,bd=20, text="6",padx="30",font=("Arial",20),pady="30",bg="cyan",fg="orange",command=lambda:btnClick(6))
+btn7=Button(mansLogs,bd=20, text="7",padx="30",font=("Arial",20),pady="30",bg="cyan",fg="orange",command=lambda:btnClick(7))
+btn8=Button(mansLogs,bd=20, text="8",padx="30",font=("Arial",20),pady="30",bg="cyan",fg="orange",command=lambda:btnClick(8))
+btn9=Button(mansLogs,bd=20, text="9",padx="30",font=("Arial",20),pady="30",bg="cyan",fg="orange",command=lambda:btnClick(9))
+btnTimes=Button(mansLogs,bd=20, text="*",padx="30",font=("Arial",20),pady="30",bg="yellow",fg="orange", command=lambda:btnCommand("*"))
+btnSlash=Button(mansLogs,bd=20, text="/",padx="30",font=("Arial",20),pady="30",bg="yellow",fg="orange", command=lambda:btnCommand("/"))
+btnMinus=Button(mansLogs,bd=20, text="-",padx="30",font=("Arial",20),pady="30",bg="yellow",fg="orange", command=lambda:btnCommand("-"))
+btnPlus=Button(mansLogs,bd=20, text="+",padx="30",font=("Arial",20),pady="30",bg="yellow",fg="orange", command=lambda:btnCommand("+"))
+btnPercent=Button(mansLogs,bd=20, text="%",padx="30",font=("Arial",20),pady="30",bg="yellow",fg="orange", command=lambda:btnCommand("%"))
+btnSqrt=Button(mansLogs,bd=20, text="√",padx="30",font=("Arial",20),pady="30",bg="yellow",fg="orange", command=sq_rt)
+btnClear=Button(mansLogs,bd=20, text="C",padx="30",font=("Arial",20),pady="30",bg="yellow",fg="orange",command=Clear)
+btnEquals=Button(mansLogs,bd=20, text="=",padx="30",font=("Arial",20),pady="30",bg="yellow",fg="orange",command=Equals)
+btnComma=Button(mansLogs,bd=20, text=",",padx="30",font=("Arial",20),pady="30",bg="yellow",fg="orange",command=show_point)
+btnLog10=Button(mansLogs,bd=20, text="Lg",padx="30",font=("Arial",20),pady="30",bg="yellow",fg="orange",command=Log10)
+btnSqr=Button(mansLogs,bd=20, text="^2",padx="30",font=("Arial",20),pady="30",bg="yellow",fg="orange",command=Square)
 
 
 btnPercent.grid(row=5,column=0)
 btnSqrt.grid(row=5,column=1)
-btnMod.grid(row=5,column=2)
+btnLog10.grid(row=5,column=2)
 btnSqr.grid(row=5,column=3)
 
 
